@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Booking Requests</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                {% if user.role == 'Owner' %}
+                <th scope="col">Player</th>
+                {% endif %}
+                <th scope="col">Playground</th>
+                <th scope="col">Day</th>
+                <th scope="col">Start</th>
+                <th scope="col">End</th>
+                <th scope="col">Price</th>
+                <th scope="col">Status</th>
+                <th scope="col"></th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings%}
+            <tr>
+                {% if user.role == 'Owner' %}
+                <td>{{booking.player}}</td>
+                {% endif %}
+                <td>{{booking.slot.playground.name}}</td>
+                <td>{{booking.slot.day}}</td>
+                <td>{{booking.slot.start_hour}}</td>
+                <td>{{booking.slot.end_hour}}</td>
+                <td>{{booking.slot.price}}$</td>
+
+                {% if user.role == 'Player'%}
+                <td>
+                    <p class='alert alert-{% if booking.status == "pending" %}warning{% elif booking.status == "accepted" %}success
+{% else %}error{% endif %}'>
+                        {{booking.status|title}}
+                    </p>
+                </td>
+                {% if booking.status == "pending"%}
+                <td>
+                    <a href="{%url 'booking-cancel' booking.id%}" class="btn btn-outline-secondary">Cancel</a>
+
+                </td>
+                {% endif %}
+                {% else%}
+                <td>
+                    {% if booking.status == "pending"%}
+                    <a href="{% url 'booking-accept' booking.id%}" class="btn btn-outline-success">Accept</a>
+                    <a href="{% url 'booking-reject' booking.id%}" class="btn btn-outline-danger">Reject</a>
+                    {%else%}
+                    <p class='alert alert-{% if booking.status == "pending" %}warning{% elif booking.status == "accepted" %}success
+{% else %}error{% endif %}'>
+                        {{booking.status|title}}
+                    </p>
+                    {% endif %}
+                </td>
+                {% endif %}
+
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+<hr>
+{% endblock content %}

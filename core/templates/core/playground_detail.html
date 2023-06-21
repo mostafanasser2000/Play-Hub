@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="center">
+    <div class="custome-card">
+
+        <h5 class="font-weight-normal">{{ground.name}}</h5>
+        <div class="post-meta"><span class="large lh-120" title="address"><i
+                    class="fas fa-map-marker-alt mr-4 mb-4"></i>
+                Address: {{ground.address}}, {{ground.city}}</span>
+        </div>
+        <div class="post-meta"><span class="large lh-120" title="owner"><i class="fas fa-user mr-2 mb-4"></i>
+                Owner: {{ground.owner.full_name}}</span>
+        </div>
+        <div class="post-meta"><span class="large lh-120" title="owner"><i class="fas fa-users mr-2 mb-2"></i>
+                Capcity: {{ground.capcity}}</span>
+        </div>
+        <div class="post-meta"><span class="large lh-120" title="owner"><i class="fas fa-seedling mr-2 mb-4"></i>
+                Grass Type: {{ground.grass_type|title}}</span>
+        </div>
+
+        {% if user.role == 'Owner' and ground.owner == user%}
+        <div class="d-flex align-items-center justify-content-center mt-4">
+            <a href="{% url 'playground-update' ground.id %}" class="btn btn-outline-primary"
+                style="margin-right: 6px;">Update</a>
+            <a href="{% url 'playground-delete' ground.id%}" class="btn btn-outline-danger"
+                style="margin-right: 6px;">Delete</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock content %}

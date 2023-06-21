@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="center">
+    <form action="" method="post">
+        {% csrf_token %}
+        <h2>Delete Playground</h2>
+        <p>Are you sure that want to delete {{ground.name}} playground</p>
+        <p class="form-buttons">
+            <input type="submit" value="Delete" class="btn btn-outline-danger">
+            <a href="{%url 'playground-list'%}" class="btn btn-outline-secondary">Cancel</a>
+        </p>
+    </form>
+</div>
+{% endblock content %}

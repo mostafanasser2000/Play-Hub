@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{%load static%}
+
+{% block content %}
+
+
+<section class="feature">
+    <div class="feature-content">
+        <h1>EL3B</h1>
+        <p>Welcome {{user.full_name|title}}</p>
+        <p>The Platform where you can find playgrounds to play football</p>
+        <a href="{% url 'playground-list'%}">Get Started</a>
+    </div>
+</section>
+{% endblock content %}
