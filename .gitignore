@@ -1,0 +1,13 @@
+db.sqlite3
+database.sqlite3
+PlayGrounds/__pycache__
+users/__pycache__
+users/migrations/__pycache__
+core/__pycache__
+core/migrations/__pycache__
+bookings/__pycache__
+bookings/migrations/__pycache__
+bookings/__pycache__
+bookings/migrations/__pycache__
+slots/__pycache__
+slots/migrations/__pycache__
