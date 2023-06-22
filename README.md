@@ -5,6 +5,10 @@ Django web appliaction for booking playgrounds, making this project to practice 
 ## Preview
 
 
+
+https://github.com/mostafanasser2000/El3b/assets/67506662/8f59840a-dac6-41e0-bf8d-38b9a869475e
+
+
 # Installing
 
 - Clone this repo
