@@ -66,7 +66,7 @@ def reject_booking(request, id):
 @login_required()
 def cancel_booking(request, id):
     booking = get_object_or_404(Booking, pk=id)
-    if booking.player != request.user:
+    if request.user != booking.player:
         messages.error(request, "You are not allowed to do that")
         return redirect('bookings')
     booking.delete()

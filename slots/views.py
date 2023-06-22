@@ -83,7 +83,7 @@ class SlotUpdate(LoginRequiredMixin,OwnerRequiredMixin,UpdateView):
      model = Slot
      success_url = reverse_lazy('slot-list')
      context_object_name = 'ground'
-     
+     form_class = SlotForm  
 
     
      def form_valid(self, form):
