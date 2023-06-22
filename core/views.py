@@ -55,18 +55,14 @@ class PlaygroundsList(LoginRequiredMixin, ListView):
        capcity = self.request.GET.get('capcity','')
        ttype = self.request.GET.get('type','')
        
-       print(name, capcity, ttype)
        qs = Playground.objects.all()
        if name:
            name = name.strip()
            qs = qs.filter(Q(name__icontains=name) | Q(city__icontains=name))
-           print(qs)
        if capcity:
             qs = qs.filter(capcity=capcity)
-            print(qs)
        if ttype:
             qs = qs.filter(grass_type=ttype)
-            print(qs)
        if self.request.user.role == 'Owner':
            return qs.filter(owner=self.request.user)
        return qs
@@ -95,7 +91,6 @@ class PlaygroundCreate(LoginRequiredMixin,CreateMixin,CreateView):
         address = form.cleaned_data['address']
         playground = Playground.objects.filter(Q(name__iexact=name)& Q(city__iexact=city)&Q (address__iexact=address))
         if playground: 
-            print("match")
             messages.error(self.request, "Playground with this information already exist")
             return redirect('playground-list')
         form.instance.owner = self.request.user
@@ -154,8 +149,3 @@ def filter(request):
     return render(request, 'filter_form.html')
 
 
-def resize_image(image):
-    new_image = Image.open(image)
-    new_image = new_image.resize((300,500))
-    new_image.save()
-    
