@@ -32,6 +32,7 @@ class PlaygroundsList(LoginRequiredMixin, ListView):
         ttype = self.request.GET.get("type", "")
 
         qs = Playground.objects.all()
+
         if name:
             name = name.strip()
             qs = qs.filter(Q(name__icontains=name) | Q(city__icontains=name))
@@ -39,6 +40,7 @@ class PlaygroundsList(LoginRequiredMixin, ListView):
             qs = qs.filter(capacity=capacity)
         if ttype:
             qs = qs.filter(grass_type=ttype)
+
         if self.request.user.role == "Owner":
             return qs.filter(owner=self.request.user)
         return qs

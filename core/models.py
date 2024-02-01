@@ -38,8 +38,8 @@ class Attachment(models.Model):
 
 class Playground(models.Model):
     class Grass(models.TextChoices):
-        ARTIFICIAL = "Artificial", "Artificial"
-        NATURAL = "Natural", "Natural"
+        ARTIFICIAL = "artificial", "artificial"
+        NATURAL = "natural", "natural"
 
     CAPACITY_CHOICES = [(5, 5), (7, 7), (11, 11)]
 

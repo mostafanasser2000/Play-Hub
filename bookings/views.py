@@ -8,6 +8,7 @@ from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.core.exceptions import PermissionDenied
+
 # Create your views here.
 
 
@@ -59,10 +60,10 @@ def accept_booking(request, id):
 def reject_booking(request, id):
     booking = get_object_or_404(Booking, pk=id)
     if booking.slot.playground.owner != request.user:
-       raise PermissionDenied()
+        raise PermissionDenied()
     booking.status = "rejected"
     booking.save()
-    return redirect("bookings")
+    return redirect("bookings:booking_list")
 
 
 @login_required()
@@ -72,4 +73,4 @@ def cancel_booking(request, id):
         raise PermissionDenied()
     booking.delete()
     messages.info(request, "booking is canceled")
-    return redirect("bookings")
+    return redirect("bookings:booking_list")
