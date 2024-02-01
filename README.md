@@ -1,41 +1,44 @@
-# El3B
+# Playground Reservation System
 
-Django web appliaction for booking playgrounds, making this project to practice django class based viwes.
+The Playground Reservation System is a web application built with Django, designed to facilitate the booking and management of playgrounds for players and owners.
 
 ## Preview
 
+## Features
 
+- **User Roles:**
+  - Players can create accounts, view available playgrounds and slots, and book playgrounds.
+  - Playground owners can add playgrounds, manage available slots, and accept or reject booking requests.
 
-https://github.com/mostafanasser2000/El3b/assets/67506662/8f59840a-dac6-41e0-bf8d-38b9a869475e
+- **Playground Management:**
+  - Playground owners can add playgrounds, set capacities, and specify the type of grass (artificial or natural).
 
+- **Slot Booking:**
+  - Users can book available slots in playgrounds, and owners can manage slot bookings.
 
-# Installing
+## Setup Instructions
 
 - Clone this repo
 ``` shell
 git clone https://github.com/your/your-project.git
 ```
+<br>
 
-- Install requirments
+- Install project dependencies
 ```shell
 pip install -r requirements.txt
 ```
 <br>
 
-- Open project folder with any IDE
+- Open the project folder with any IDE
 - Run these commands
 ``` shell
-python3 manage.py makemigrations
+python3 manage.py make migrations
 python3 manage.py migrate
 ```
 <br>
 
-- Run development server
+- Run the development server
 ```shell
 python3 manage.py runserver
 ```
-
-<br>
-
-### Note
-some css snippets are taken from the internet not my actual works
