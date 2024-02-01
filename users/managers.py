@@ -1,29 +1,27 @@
-from django.contrib.auth.base_user  import BaseUserManager
+from django.contrib.auth.base_user import BaseUserManager
 from django.utils.translation import gettext as _
 
+
 class CustomUsermanager(BaseUserManager):
-    
-    def create_user(self, email, password, **extra_fields):
+    def create_user(self, email, password=None, role=None):
         """
-        Creates and saves a User with given email, and password
+        Create and saves a User with the given email and password and role
         """
+
         if not email:
-            raise ValueError(_('Users must have an email address'))
-        email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
-        user.set_passowrd(password)
+            raise ValueError("Users must have an email address")
+
+        user = self.model(email=self.normalize_email(email), role=role)
+
+        user.set_password(password)
         user.save(using=self._db)
         return user
-    
-    def create_superuser(self,email, password, **extra_fields):
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
-        extra_fields.setdefault('is_active', True)
-        
-        if extra_fields.get('is_staff') is not True:
-            raise ValueError(_('Superuser must have is_staff=True.'))
-        if extra_fields.get('is_superuser') is not True:
-            raise ValueError(_('Superuser must have is_superuser=True.'))
-        return self.create_user(email, password, **extra_fields)
-        
-        
+
+    def create_superuser(self, email, password=None):
+        """
+        Creates and saves the superuser with the given email, password
+        """
+        user = self.create_user(email, password=password)
+        user.is_admin = True
+        user.save(using=self._db)
+        return user

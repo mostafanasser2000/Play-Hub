@@ -16,6 +16,8 @@
         <small class="error">{{field.errors|striptags}}</small>
         {% endif %}
         {% endfor %}
+        <label for="additional_images">Additional Playground Images:</label>
+        <input type="file" name="additional_images" id="additional_images" multiple  accept="image/*">
         <input type="submit" value="{% if ground %}Update{%else%}Add{%endif%}"
             class="btn btn-outline-primary full-width">
     </form>

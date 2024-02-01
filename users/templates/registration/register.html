@@ -13,8 +13,7 @@
         {% endif %}
         {% endfor %}
         <input type="submit" value="Register" class="btn btn-primary full-width">
-        <hr>
-        <p class="text-center">Already have an account?<a href="{% url 'login'%}"></a>Login</p>
+        <p class="text-center">Already have an account?<a href="{% url 'accounts:login'%}">Login</a></p>
     </form>
 
 </div>

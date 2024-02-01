@@ -41,15 +41,15 @@
                 </td>
                 {% if booking.status == "pending"%}
                 <td>
-                    <a href="{%url 'booking-cancel' booking.id%}" class="btn btn-outline-secondary">Cancel</a>
+                    <a href="{%url 'bookings:booking_cancel' booking.id%}" class="btn btn-outline-secondary">Cancel</a>
 
                 </td>
                 {% endif %}
                 {% else%}
                 <td>
                     {% if booking.status == "pending"%}
-                    <a href="{% url 'booking-accept' booking.id%}" class="btn btn-outline-success">Accept</a>
-                    <a href="{% url 'booking-reject' booking.id%}" class="btn btn-outline-danger">Reject</a>
+                    <a href="{% url 'bookings:booking_accept' booking.id%}" class="btn btn-outline-success">Accept</a>
+                    <a href="{% url 'bookings:booking_reject' booking.id%}" class="btn btn-outline-danger">Reject</a>
                     {%else%}
                     <p class='alert alert-{% if booking.status == "pending" %}warning{% elif booking.status == "accepted" %}success
 {% else %}error{% endif %}'>

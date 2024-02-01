@@ -23,10 +23,10 @@
 
         <div class="mr-auto">
             {% if user.is_authenticated %}
-            <a class="btn btn-primary" href="{%url 'logout'%}">Logout</a>
+            <a class="btn btn-primary" href="{%url 'accounts:logout'%}">Logout</a>
             {%else%}
-            <a class="btn btn-primary" href="{%url 'login'%}">Log In</a>
-            <a class="btn btn-success" href="{% url 'register'%}">Sign Up</a>
+            <a class="btn btn-primary" href="{%url 'accounts:login'%}">Log In</a>
+            <a class="btn btn-success" href="{% url 'account:register'%}">Sign Up</a>
             {% endif %}
         </div>
     </div>

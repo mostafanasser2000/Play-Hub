@@ -2,8 +2,7 @@
 
 {% block content %}
 <div class="center">
-    <form action="{%url 'playground-list' %}" method="get" class="custome-card" novalidate>
-        {% csrf_token %}
+    <form action="{%url 'core:playground_list' %}" method="get" class="custome-card" novalidate>
         <input name='name' type="search" value="{{name}}" class="form-control rounded" placeholder="Playground Name"
             aria-label="Search" aria-describedby="search-addon" placeholder="PLayground Name" />
         <h3>Type</h3>
@@ -15,17 +14,17 @@
             <input class="form-check-input" type="checkbox" name="type" id="type_nat" value="natural">
             <label class="form-check-label" for="type_art">Natural</label>
         </div>
-        <h3>Capcity</h3>
+        <h3>Capacity</h3>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="capcity" id="cap_5" value="5">
+            <input class="form-check-input" type="checkbox" name="capacity" id="cap_5" value="5">
             <label class="form-check-label" for="cap_5">5</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="capcity" id="cap_7" value="7">
+            <input class="form-check-input" type="checkbox" name="capacity" id="cap_7" value="7">
             <label class="form-check-label" for="cap_7">7</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="capcity" id="cap_11" value="11">
+            <input class="form-check-input" type="checkbox" name="capacity" id="cap_11" value="11">
             <label class="form-check-label" for="cap_11">11</label>
         </div>
         <input type="submit" value="Filter" class="btn btn-primary full-width">

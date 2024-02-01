@@ -1,13 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if user.role == 'Owner' %}
-<a href="{%url 'slot-create'%}">Add Slot</a>
-{% endif %}
+
 <div class="container">
     {% if user.role == 'Owner' %}
     <div class="d-flex align-items-center justify-content-center mb-4">
-        <a href="{% url 'slot-create' %}" class="btn btn-outline-dark">Add Slot</a>
+        <a href="{% url 'slots:slot_create' %}" class="btn btn-outline-dark">Add Slot</a>
     </div>
     {% endif %}
     <table class="table">
@@ -25,18 +23,18 @@
         <tbody>
             {% for slot in slots%}
             <tr>
-                <td>{{slot.playground.name}}</td>
+                <td><a href="{{slot.playground.get_absolute_url}}">{{slot.playground.name}}</a></td>
                 <td>{{slot.day}}</td>
                 <td>{{slot.start_hour}}</td>
                 <td>{{slot.end_hour}}</td>
                 <td>{{slot.price}}$</td>
                 <td>
                     {% if user.role == 'Player' %}
-                    <a href="{% url 'make-booking' slot.id%}" class="btn btn-outline-primary">Book</a>
+                    <a href="{% url 'bookings:make_booking' slot.id%}" class="btn btn-outline-primary">Book</a>
                     {% endif %}
                     {% if user.role == 'Owner' %}
-                    <a href="{% url 'slot-update' slot.id%}" class="btn btn-outline-primary">Update</a>
-                    <a href="{% url 'slot-delete' slot.id%}" class="btn btn-outline-danger">Delete</a>
+                    <a href="{% url 'slots:slot_update' slot.id%}" class="btn btn-outline-primary">Update</a>
+                    <a href="{% url 'slots:slot_delete' slot.id%}" class="btn btn-outline-danger">Delete</a>
                     {% endif %}
                 </td>
 

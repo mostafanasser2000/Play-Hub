@@ -21,19 +21,12 @@ from django.conf import settings
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('core.urls')),
-    path('', include('slots.urls')),
-    path('', include('bookings.urls')),
-    path('', include('users.urls')),
-    path('', include('bookings.urls')),
+    path("admin/", admin.site.urls),
+    path("", include("core.urls", namespace="core")),
+    path("slots/", include("slots.urls", namespace="slots")),
+    path("bookings/", include("bookings.urls", namespace="bookings")),
+    path("accounts/", include("users.urls", namespace="accounts")),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
-    
-
-]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
-
-
-urlpatterns += [
-    path('', RedirectView.as_view(url='gofo/', permanent=True))
-]
+# urlpatterns += [path("PlyHub", RedirectView.as_view(url="", permanent=True))]

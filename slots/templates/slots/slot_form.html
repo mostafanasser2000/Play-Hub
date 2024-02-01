@@ -9,6 +9,9 @@
             {%else%}
             Add
             {% endif %} Slot</h2>
+        {% if form.errors %}
+            <small class="error">{{form.errors|striptags}}</small>
+        {% endif %}
         {% for field in form%}
         {{field.label_tag}}
         {{field}}
