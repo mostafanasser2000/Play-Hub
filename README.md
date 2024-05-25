@@ -3,6 +3,7 @@
 The Playground Reservation System is a web application built with Django, designed to facilitate the booking and management of playgrounds for players and owners.
 
 ## Preview
+[![Play-Hub Preview](https://img.youtube.com/vi/HDMcdPh2okM/0.jpg)](https://www.youtube.com/watch?v=HDMcdPh2okM)
 
 ## Features
 
